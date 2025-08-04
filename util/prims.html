@@ -10,10 +10,9 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./util/style.css" />
-    <script src="./util/anime.js"></script>
-    <script src="./util/anime.es"></script>
-    <script src="./util/anime.es.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="anime.js"></script>
+    <script src="anime.es.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -32,7 +31,7 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <title>Maze Generator</title>
+    <title>Document</title>
   </head>
   <body>
     <div class="main">
@@ -52,57 +51,65 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active"
-              href="./index.html">DFS <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="./util/prims.html">Prims</a>
-            <a class="nav-item nav-link" href="./util/kruskals.html">Kruskals</a>
+            <a class="nav-item nav-link" href="../index.html"
+              >DFS <span class="sr-only">(current)</span></a
+            >
+            <a class="nav-item nav-link active" href="./prims.html">Prims</a>
+            <a class="nav-item nav-link" href="./kruskals.html">Kruskals</a>
           </div>
         </div>
       </nav>
 
       <div class="content">
-        <script src="./util/index.js" defer></script>
+        <script src="prims.js" defer></script>
         <div class="left"></div>
         <div class="right">
-          <h2>Depth First Search and Recursive Backtracker</h2>
-          <p id="para">
-            <ul>
-               <li>Begin by selecting an initial cell from the maze grid.</li>
-            <li>Randomly select one of the walls of the current cell and attempt to carve a passage to an adjacent, unvisited cell. If such a cell exists, connect the two and make the adjacent cell the new current cell.</li>
-            <li>If the current cell has no unvisited neighbors, backtrack recursively to the most recent cell with uncarved walls.</li>
-            <li>Repeat the process until all cells have been visited and a complete maze has been generated.</li>
-            </ul>
+          <h2>Randomized Prim's Algorithm</h2>
+          <p id="para" style="color: #d2d2d2; margin-left: 7px">
+            Prim’s algorithm constructs a Minimum Spanning Tree (MST) by expanding outward from a single starting point,
+            rather than analyzing all edges globally. 
+            It incrementally builds the MST by always selecting the smallest possible edge that adds a new vertex.
           </p>
-          <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ab magni repellendus deserunt nisi a ipsam rerum adipisci reiciendis ducimus! Quaerat necessitatibus labore rerum debitis iste accusantium nemo voluptatibus, dolores consequuntur aut itaque explicabo eligendi veritatis doloribus ad sequi assumenda quam magni temporibus fuga aliquid sunt expedita fugit. Vitae, voluptas!
-          </p> -->
+          <ul>
+            <li>
+               Select an arbitrary starting vertex from the graph G, and place it into a set 
+               V (initially containing only this vertex).
+            </li>
+            <li>
+               Among all edges connecting vertices in V to vertices not yet in   
+               V, choose the edge with the minimum weight.
+            </li>
+            <li>
+              Add the selected edge and its destination vertex to the MST and to the set V.
+            </li>
+            <li> Repeat steps 2 and 3 until all vertices are included in V.</li>
+          </ul>
+          <p id="para2" style="color: #d2d2d2; margin-left: 7px">
+            And the result is a minimal spanning tree of G. Straightforward
+            enough!<br /><br />
+          </p>
           <button id="go">Start!</button>
           <div class="gridsize">
             <div class="forn">
-              <label style="color: #d2d2d2; margin-right: 10px"
-                >Choose Number of Rows:</label
-              >
+              <label style="color: #d2d2d2; margin-right: 10px">Choose Number of Rows:</label>
               <input
                 id="sizen"
                 class="numberstyle"
                 type="number"
                 min="1"
                 step="1"
-                value="1"
-              />
+                value="1"/>
             </div>
             <div class="form">
               <label style="color: #d2d2d2; margin-right: 10px"
-                >Choose Number of Columns:</label
-              >
+                >Choose Number of Columns:</label>
               <input
                 id="sizem"
                 class="numberstyle"
                 type="number"
                 min="1"
                 step="1"
-                value="1"
-              />
+                value="1"/>
             </div>
             <div class="dosubmit">
               <input id="setsize" type="submit" value="Submit" />

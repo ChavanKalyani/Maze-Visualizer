@@ -10,10 +10,9 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./util/style.css" />
-    <script src="./util/anime.js"></script>
-    <script src="./util/anime.es"></script>
-    <script src="./util/anime.es.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="anime.js"></script>
+    <script src="anime.es.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -32,7 +31,7 @@
       crossorigin="anonymous"
       defer
     ></script>
-    <title>Maze Generator</title>
+    <title>Document</title>
   </head>
   <body>
     <div class="main">
@@ -52,30 +51,43 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active"
-              href="./index.html">DFS <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="./util/prims.html">Prims</a>
-            <a class="nav-item nav-link" href="./util/kruskals.html">Kruskals</a>
+            <a class="nav-item nav-link" href="../index.html"
+              >DFS <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="./prims.html">Prims</a>
+            <a class="nav-item nav-link active" href="./kruskals.html"
+              >Kruskals</a>
           </div>
         </div>
       </nav>
 
       <div class="content">
-        <script src="./util/index.js" defer></script>
+        <script src="kruskals.js" defer></script>
         <div class="left"></div>
         <div class="right">
-          <h2>Depth First Search and Recursive Backtracker</h2>
-          <p id="para">
-            <ul>
-               <li>Begin by selecting an initial cell from the maze grid.</li>
-            <li>Randomly select one of the walls of the current cell and attempt to carve a passage to an adjacent, unvisited cell. If such a cell exists, connect the two and make the adjacent cell the new current cell.</li>
-            <li>If the current cell has no unvisited neighbors, backtrack recursively to the most recent cell with uncarved walls.</li>
-            <li>Repeat the process until all cells have been visited and a complete maze has been generated.</li>
-            </ul>
+          <h2>Randomized Kruskal's Algorithm</h2>
+          <p id="para" style="color: #d2d2d2">
+            Kruskal’s algorithm is a method for producing a minimal spanning
+            tree from a weighted graph. The algorithm I’ll cover here is
+            actually a randomized version of Kruskal’s; the original works
+            something like this:
           </p>
-          <!-- <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ab magni repellendus deserunt nisi a ipsam rerum adipisci reiciendis ducimus! Quaerat necessitatibus labore rerum debitis iste accusantium nemo voluptatibus, dolores consequuntur aut itaque explicabo eligendi veritatis doloribus ad sequi assumenda quam magni temporibus fuga aliquid sunt expedita fugit. Vitae, voluptas!
-          </p> -->
+          <ul>
+            <li>
+              Throw all of the edges in the graph into a big burlap sack. (Or,
+              you know, a set or something.)
+            </li>
+            <li>
+              Pull out the edge with the lowest weight. If the edge connects two
+              disjoint trees, join the trees. Otherwise, throw that edge away.
+            </li>
+            <li>Repeat until there are no more edges left.</li>
+            <li>
+              The randomized algorithm just changes the second step, so that
+              instead of pulling out the edge with the lowest weight, you remove
+              an edge from the bag at random. Making that change, the algorithm
+              now produces a fairly convincing maze.
+            </li>
+          </ul>
           <button id="go">Start!</button>
           <div class="gridsize">
             <div class="forn">
